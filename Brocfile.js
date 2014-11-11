@@ -17,32 +17,4 @@ var app = new EmberAddon();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/paint/paint.scss');
-app.import('bower_components/modernizr/modernizr.js');
-app.import('bower_components/foundation/js/foundation.js');
-
-app.import('bower_components/fontawesome/fonts/fontawesome-webfont.ttf', {
-  destDir: 'assets/fonts'
-});
-
-app.import('bower_components/fontawesome/fonts/fontawesome-webfont.woff', {
-  destDir: 'assets/fonts'
-});
-
-app.import('bower_components/fontawesome/fonts/fontawesome-webfont.svg', {
-  destDir: 'assets/fonts'
-});
-
-app.import('bower_components/fontawesome/fonts/fontawesome-webfont.eot', {
-  destDir: 'assets/fonts'
-});
-
-app.import('bower_components/paint/images/favicon.ico', {
-  destDir: 'assets/images'
-});
-
-app.import('bower_components/paint/images/logo.png', {
-  destDir: 'assets/images'
-});
-
 module.exports = app.toTree();
