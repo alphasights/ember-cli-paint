@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['spinner'],
+  attributeBindings: ['width', 'length', 'radius', 'color'],
+  classNameBindings: [':spinner'],
 
-  didInsertElement: function() {
-    new Spinner({
-      width: 2,
-      length: 3,
-      radius: 4,
-      color: '#ffffff'
-    }).spin(this.$()[0]);
-  }
+  color: '#000000',
+  length: 3,
+  radius: 4,
+  width: 2,
+
+  onDidInsertElement: function() {
+    new Spinner(this.getProperties('width', 'length', 'radius', 'color'))
+      .spin(this.$()[0]);
+  }.on('didInsertElement')
 });
