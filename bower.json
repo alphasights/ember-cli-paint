@@ -15,7 +15,7 @@
     "qunit": "~1.15.0"
   },
   "devDependencies": {
-    "paint": "git://github.com/alphasights/paint.git#3c085ef958",
+    "paint": "0.3.0",
     "spinjs": "2.0.1"
   },
   "resolutions": {
