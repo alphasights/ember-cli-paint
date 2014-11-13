@@ -1,5 +1,6 @@
 {
   "predef": [
+    "Spinner",
     "document",
     "window",
     "-Promise"
