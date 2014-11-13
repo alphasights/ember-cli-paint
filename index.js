@@ -11,9 +11,7 @@ module.exports = {
     app.import(path.join(app.bowerDirectory, 'paint/paint.scss'));
     app.import(path.join(app.bowerDirectory, 'modernizr/modernizr.js'));
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation.js'));
-    app.import(path.join(app.bowerDirectory, 'spinjs/spin.js'), {
-      exports: { 'spinjs': 'Spinner' }
-    });
+    app.import(path.join(app.bowerDirectory, 'spinjs/spin.js'));
 
     app.import(path.join(app.bowerDirectory, 'fontawesome/fonts/fontawesome-webfont.ttf'), {
       destDir: 'assets/fonts'

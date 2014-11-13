@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Spinner from 'spinjs';
 
 export default Ember.Component.extend({
   classNames: ['spinner'],
