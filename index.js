@@ -36,11 +36,5 @@ module.exports = {
     app.import(path.join(app.bowerDirectory, 'paint/images/logo.png'), {
       destDir: 'assets/images'
     });
-  },
-
-   afterInstall: function() {
-    return this.addBowerPackageToProject('paint', 'git://github.com/alphasights/paint.git#3c085ef958').then(function() {
-      return this.addBowerPackageToProject('spinjs', '2.0.1');
-    });
   }
 };
