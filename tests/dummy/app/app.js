@@ -5,8 +5,6 @@ import config from './config/environment';
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
-Foundation.global.namespace = '';
-
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
