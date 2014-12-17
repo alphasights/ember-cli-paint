@@ -6,11 +6,11 @@ export default Ember.Component.extend({
   align: 'right',
 
   options: function() {
-    return `align: ${this.get('align')}`;
+    return 'align: ' + this.get('align');
   }.property('align'),
 
   id: function() {
-    return `${Ember.guidFor(this)}-dropdown`;
+    return Ember.guidFor(this) + '-dropdown';
   }.property('element'),
 
   close: function() {
