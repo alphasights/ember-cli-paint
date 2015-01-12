@@ -9,8 +9,8 @@ export default Ember.Component.extend({
   tooltipPosition: 'bottom',
 
   tooltipPositionClass: function() {
-    return 'tip-' + this.get('position');
-  }.property('position'),
+    return 'tip-' + this.get('tooltipPosition');
+  }.property('tooltipPosition'),
 
   onDidInsertElement: function() {
     Ember.$(document).foundation({ tooltip: {} });
