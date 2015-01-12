@@ -14,6 +14,8 @@ module.exports = {
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation/foundation.dropdown.js'));
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation/foundation.tooltip.js'));
     app.import(path.join(app.bowerDirectory, 'spinjs/spin.js'));
+    app.import('vendor/trackpad-scroll-emulator/jquery.trackpad-scroll-emulator.js');
+    app.import('vendor/trackpad-scroll-emulator/trackpad-scroll-emulator.css');
 
     app.import(path.join(app.bowerDirectory, 'fontawesome/fonts/fontawesome-webfont.ttf'), {
       destDir: 'assets/fonts'
