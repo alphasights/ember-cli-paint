@@ -13,6 +13,6 @@ export default Ember.Component.extend({
     Ember.run.schedule('afterRender', () => {
       new Spinner(this.getProperties('width', 'length', 'radius', 'color'))
         .spin(this.$()[0]);
-    })
+    });
   }.on('didInsertElement')
 });

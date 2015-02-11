@@ -6,6 +6,6 @@ export default Ember.Component.extend({
   onDidInsertElement: function() {
     Ember.run.schedule('afterRender', () => {
       this.$().TrackpadScrollEmulator();
-    })
+    });
   }.on('didInsertElement')
 });
