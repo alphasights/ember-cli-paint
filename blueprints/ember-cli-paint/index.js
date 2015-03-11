@@ -5,7 +5,9 @@ module.exports = {
 
   afterInstall: function() {
     return this.addPackagesToProject([
-      { name: 'liquid-fire', target: '0.15.0' }
+      { name: 'liquid-fire', target: '0.17.1' },
+      { name: 'ember-rl-dropdown', target: 'git+https://git@github.com/alphasights/ember-rl-dropdown.git' },
+      { name: 'ember-cli-tooltipster', target: '0.0.6' }
     ]).then(function() {
       return this.addBowerPackagesToProject([
         { name: 'paint', target: '0.6.10' },
