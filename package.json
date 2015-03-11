@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-paint",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "Foundation for Ember paint applications",
   "directories": {
     "doc": "doc",
