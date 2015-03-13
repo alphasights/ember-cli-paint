@@ -11,7 +11,8 @@ module.exports = {
     ]).then(function() {
       return this.addBowerPackagesToProject([
         { name: 'paint', target: '0.6.10' },
-        { name: 'spinjs', target: '2.0.1' }
+        { name: 'spinjs', target: '2.0.1' },
+        { name: 'tooltipster', target: '3.3.0' }
       ]).then(function() {
         return this.insertIntoFile('.jshintrc', '    "Spinner",', { after: '"predef": [\n' } );
       }.bind(this));
