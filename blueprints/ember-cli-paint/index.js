@@ -13,7 +13,7 @@ module.exports = {
         { name: 'paint', target: '0.6.10' },
         { name: 'spinjs', target: '2.0.1' }
       ]).then(function() {
-        return this.insertIntoFile('.jshintrc', '    "Spinner": true,', { after: '"predef": {\n' } );
+        return this.insertIntoFile('.jshintrc', '    "Spinner": true,', { after: '"predef": [\n' } );
       }.bind(this));
     }.bind(this));
  }
