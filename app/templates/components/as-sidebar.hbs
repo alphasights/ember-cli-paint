@@ -21,21 +21,23 @@
   </ul>
 {{/as-scrollable}}
 
-<section class="user-session">
-  <div class="toggle-actions">
-    {{#rl-dropdown-container class="dropdown"}}
-      {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
+{{#if currentUser}}
+  <section class="user-session">
+    <div class="toggle-actions">
+      {{#rl-dropdown-container class="dropdown"}}
+        {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
 
-      {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
-        <li><a {{action "logout"}}>Logout</a></li>
-      {{/rl-dropdown}}
-    {{/rl-dropdown-container}}
-  </div>
+        {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
+          <li><a {{action "logout"}}>Logout</a></li>
+        {{/rl-dropdown}}
+      {{/rl-dropdown-container}}
+    </div>
 
-  <div class="picture">
-    <img alt="Profile Picture"
-      {{bind-attr src=currentUser.avatarUrl title=currentUser.initials}} />
-  </div>
+    <div class="picture">
+      <img alt="Profile Picture"
+        {{bind-attr src=currentUser.avatarUrl title=currentUser.initials}} />
+    </div>
 
-  <div class="name">{{currentUser.name}}</div>
-</section>
+    <div class="name">{{currentUser.name}}</div>
+  </section>
+{{/if}}
