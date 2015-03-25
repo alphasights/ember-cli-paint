@@ -22,7 +22,7 @@
 {{/as-scrollable}}
 
 {{#if currentUser}}
-  <section class="user-session">
+  <footer>
     <div class="toggle-actions">
       {{#rl-dropdown-container class="dropdown"}}
         {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
@@ -39,5 +39,5 @@
     </div>
 
     <div class="name">{{currentUser.name}}</div>
-  </section>
+  </footer>
 {{/if}}
