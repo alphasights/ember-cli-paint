@@ -17,12 +17,6 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "liquid-fire": "0.17.1",
-    "ember-rl-dropdown": "git+https://git@github.com/alphasights/ember-rl-dropdown.git",
-    "ember-cli-tooltipster": "0.0.6",
-    "broccoli-sass": "0.4.0"
-  },
   "devDependencies": {
     "broccoli-asset-rev": "2.0.0",
     "ember-cli": "0.2.0",
