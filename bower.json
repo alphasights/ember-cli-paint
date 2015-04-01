@@ -14,5 +14,8 @@
     "qunit": "1.17.1",
     "paint": "0.6.10",
     "spinjs": "2.0.1"
+  },
+  "resolutions": {
+    "jquery": "^1.11.1"
   }
 }
