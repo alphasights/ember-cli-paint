@@ -3,13 +3,14 @@ import Ember from 'ember';
 export default Ember.Mixin.create({
   index: null,
   navigableModels: null,
+  currentModel: null,
   modelRouteParams: [],
 
   initializeIndex: function() {
     if (this.get('index') == null) {
-      this.set('index', this.get('navigableModels').indexOf(this.get('model')));
+      this.set('index', this.get('navigableModels').indexOf(this.get('currentModel')));
     }
-  }.observes('model'),
+  }.observes('currentModel'),
 
   navigate: function(step) {
     var models = this.get('navigableModels');
