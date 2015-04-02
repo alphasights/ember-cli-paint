@@ -17,10 +17,10 @@ export default Ember.Mixin.create({
     var newModelIndex = this.get('index') + step;
 
     if (newModelIndex < 0) {
-      newModelIndex = models.length + newModelIndex;
+      newModelIndex = models.get('length') + newModelIndex;
     }
 
-    var newModel = models.objectAt(newModelIndex % models.length);
+    var newModel = models.objectAt(newModelIndex % models.get('length'));
 
     this.set('index', newModelIndex);
     this.transitionToRoute(...this.get('modelRouteParams').concat(newModel.get('id')));
