@@ -11,7 +11,7 @@ module.exports = {
       { name: 'broccoli-sass', target: '0.4.0' }
     ]).then(function() {
       return this.addBowerPackagesToProject([
-        { name: 'paint', target: '0.7.20' },
+        { name: 'paint', target: '0.7.2' },
         { name: 'spinjs', target: '2.0.1' },
         { name: 'tooltipster', target: '3.3.0' }
       ]).then(function() {
