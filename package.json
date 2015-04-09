@@ -36,7 +36,8 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "4.3.3"
+    "ember-cli-babel": "4.3.3",
+    "ember-component-inbound-actions": "0.0.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
