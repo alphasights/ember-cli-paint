@@ -1,5 +1,7 @@
 # Ember-cli-paint
 
+[![Ember Observer Score](http://emberobserver.com/badges/ember-cli-paint.svg)](http://emberobserver.com/addons/ember-cli-paint)
+
 `ember-cli-paint` is an Ember addon that adds [Paint](https://github.com/alphasights/paint) components to your application.
 
 More specifically it does two things:
