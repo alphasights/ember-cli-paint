@@ -43,7 +43,7 @@ export default Ember.Mixin.create({
 
     next: function() {
       if (!this.get('disableNext')) {
-        this.navigate(-1);
+        this.navigate(1);
       }
     }
   }
