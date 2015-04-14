@@ -103,4 +103,13 @@ If you have added a new Paint component remember to bump its version in bower.js
 
 * `ember build`
 
+## Publishing the package
+
+- Merge your PR on GitHub
+- `git checkout master`
+- `git pull`
+- Bump package version (e.g. `npm version patch`)
+- `npm publish`
+- `git push --tags`
+
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
