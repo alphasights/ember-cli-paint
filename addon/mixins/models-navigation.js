@@ -3,8 +3,16 @@ import Ember from 'ember';
 export default Ember.Mixin.create({
   index: null,
   navigableModels: null,
-  navigableModel: Ember.computed.alias('model'),
   modelRouteParams: [],
+  disableCycling: false,
+  navigableModel: Ember.computed.alias('model'),
+  firstModel: Ember.computed.equal('index', 0),
+  disableNext: Ember.computed.and('lastModel', 'disableCycling'),
+  disablePrevious: Ember.computed.and('firstModel', 'disableCycling'),
+
+  lastModel: Ember.computed('index', function() {
+    return this.get('index') === this.get('navigableModels.length') - 1;
+  }),
 
   initializeIndex: function() {
     if (this.get('index') == null) {
@@ -28,11 +36,15 @@ export default Ember.Mixin.create({
 
   actions: {
     previous: function() {
-      this.navigate(-1);
+      if (!this.get('disablePrevious')) {
+        this.navigate(-1);
+      }
     },
 
     next: function() {
-      this.navigate(1);
+      if (!this.get('disableNext')) {
+        this.navigate(-1);
+      }
     }
   }
 });
