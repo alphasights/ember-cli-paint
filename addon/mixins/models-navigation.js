@@ -39,11 +39,15 @@ export default Ember.Mixin.create({
 
   actions: {
     previous: function() {
-      this.navigate(-1);
+      if (!this.get('disablePrevious')) {
+        this.navigate(-1);
+      }
     },
 
     next: function() {
-      this.navigate(1);
+      if (!this.get('disableNext')) {
+        this.navigate(-1);
+      }
     }
   }
 });
