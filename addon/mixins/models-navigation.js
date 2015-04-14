@@ -5,6 +5,7 @@ export default Ember.Mixin.create({
   navigableModels: null,
   navigableModel: Ember.computed.alias('model'),
   modelRouteParams: [],
+  disableCycling: false,
 
   initializeIndex: function() {
     if (this.get('index') == null) {
@@ -25,6 +26,16 @@ export default Ember.Mixin.create({
     this.set('index', newModelIndex);
     this.transitionToRoute(...this.get('modelRouteParams').concat(newModel.get('id')));
   },
+
+  lastModel: Ember.computed('index', function() {
+    return this.get('index') === this.get('navigableModels.length') - 1;
+  }),
+
+  firstModel: Ember.computed.equal('index', 0),
+
+  disableNext: Ember.computed.and('lastModel', 'disableCycling'),
+
+  disablePrevious: Ember.computed.and('firstModel', 'disableCycling'),
 
   actions: {
     previous: function() {
