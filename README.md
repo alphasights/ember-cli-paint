@@ -32,7 +32,7 @@ export default Ember.Component.extend({
   tooltipPosition: 'bottom',
 
   tooltipPositionClass: function() {
-    return 'tip-' + this.get('tooltipPosition');
+    return `tip-${this.get('tooltipPosition')}`;
   }.property('tooltipPosition'),
 
   onDidInsertElement: function() {

@@ -4,8 +4,8 @@ export default Ember.Component.extend({
   classNameBindings: [':scrollable', ':tse-scrollable'],
 
   onDidInsertElement: function() {
-    Ember.run.schedule('afterRender', function() {
+    Ember.run.schedule('afterRender', () => {
       this.$().TrackpadScrollEmulator();
-    }.bind(this));
+    });
   }.on('didInsertElement')
 });
