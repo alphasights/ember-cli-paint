@@ -1,36 +1,40 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  index: null,
+  navigationIndex: null,
   navigableModels: null,
   modelRouteParams: [],
   disableCycling: false,
   navigableModel: Ember.computed.alias('model'),
-  firstModel: Ember.computed.equal('index', 0),
+  firstModel: Ember.computed.equal('navigationIndex', 0),
   disableNext: Ember.computed.and('lastModel', 'disableCycling'),
   disablePrevious: Ember.computed.and('firstModel', 'disableCycling'),
 
-  lastModel: Ember.computed('index', function() {
-    return this.get('index') === this.get('navigableModels.length') - 1;
+  lastModel: Ember.computed('navigationIndex', function() {
+    return this.get('navigationIndex') === this.get('navigableModels.length') - 1;
   }),
 
-  initializeIndex: function() {
-    if (this.get('index') == null) {
-      this.set('index', this.get('navigableModels').indexOf(this.get('navigableModel')));
+  initializeNavigationIndex: function() {
+    if (this.get('navigationIndex') == null) {
+      this.set('navigationIndex', this.get('navigableModels').indexOf(this.get('navigableModel')));
     }
   }.observes('navigableModel'),
 
+  resetIndex: function() {
+    this.set('navigationIndex', null);
+  }.observes('navigableModels.[]'),
+
   navigate: function(step) {
     var models = this.get('navigableModels');
-    var newModelIndex = this.get('index') + step;
+    var newIndex = this.get('navigationIndex') + step;
 
-    if (newModelIndex < 0) {
-      newModelIndex = models.get('length') + newModelIndex;
+    if (newIndex < 0) {
+      newIndex = models.get('length') + newIndex;
     }
 
-    var newModel = models.objectAt(newModelIndex % models.get('length'));
+    var newModel = models.objectAt(newIndex % models.get('length'));
 
-    this.set('index', newModelIndex);
+    this.set('navigationIndex', newIndex);
     this.transitionToRoute(...this.get('modelRouteParams').concat(newModel.get('id')));
   },
 
