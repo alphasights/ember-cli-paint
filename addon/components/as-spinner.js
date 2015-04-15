@@ -10,9 +10,9 @@ export default Ember.Component.extend({
   width: 2,
 
   onDidInsertElement: function() {
-    Ember.run.schedule('afterRender', function() {
+    Ember.run.schedule('afterRender', () => {
       new Spinner(this.getProperties('width', 'length', 'radius', 'color'))
         .spin(this.$()[0]);
-    }.bind(this));
+    });
   }.on('didInsertElement')
 });
