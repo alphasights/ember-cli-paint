@@ -20,6 +20,10 @@ export default Ember.Mixin.create({
     }
   }.observes('navigableModel'),
 
+  updateIndex: function() {
+    this.set('navigationIndex', this.get('navigableModels').indexOf(this.get('navigableModel')));
+  }.observes('navigableModels.[]'),
+
   resetIndex: function() {
     this.set('navigationIndex', null);
   }.observes('navigableModels.[]'),
