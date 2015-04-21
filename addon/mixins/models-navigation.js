@@ -10,7 +10,7 @@ export default Ember.Mixin.create({
   disableNext: Ember.computed.and('lastModel', 'disableCycling'),
   disablePrevious: Ember.computed.and('firstModel', 'disableCycling'),
 
-  lastModel: Ember.computed('navigationIndex', function() {
+  lastModel: Ember.computed('navigationIndex', 'navigableModels.[]', function() {
     return this.get('navigationIndex') === this.get('navigableModels.length') - 1;
   }),
 
@@ -20,7 +20,7 @@ export default Ember.Mixin.create({
     }
   }.observes('navigableModel'),
 
-  resetIndex: function() {
+  resetNavigationIndex: function() {
     this.set('navigationIndex', null);
   }.observes('navigableModels.[]'),
 
