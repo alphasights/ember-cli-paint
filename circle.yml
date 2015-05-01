@@ -1,7 +1,3 @@
-machine:
-  node:
-    version: 0.10.22
-
 dependencies:
   override:
     - npm install

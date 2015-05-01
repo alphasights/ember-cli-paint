@@ -5,13 +5,17 @@ module.exports = {
 
   afterInstall: function() {
     return this.addPackagesToProject([
-      { name: 'liquid-fire', target: '0.15.0' }
+      { name: 'liquid-fire', target: '0.17.1' },
+      { name: 'ember-rl-dropdown', target: 'git+https://git@github.com/alphasights/ember-rl-dropdown.git' },
+      { name: 'ember-cli-tooltipster', target: '0.0.6' },
+      { name: 'broccoli-sass', target: '0.4.0' }
     ]).then(function() {
       return this.addBowerPackagesToProject([
-        { name: 'paint', target: '0.5.1' },
-        { name: 'spinjs', target: '2.0.1' }
+        { name: 'paint', target: '0.6.10' },
+        { name: 'spinjs', target: '2.0.1' },
+        { name: 'tooltipster', target: '3.3.0' }
       ]).then(function() {
-        return this.insertIntoFile('.jshintrc', '    "Spinner": true,', { after: '"predef": {\n' } );
+        return this.insertIntoFile('.jshintrc', '    "Spinner",', { after: '"predef": [\n' } );
       }.bind(this));
     }.bind(this));
  }
