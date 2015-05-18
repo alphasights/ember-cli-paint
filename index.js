@@ -25,6 +25,10 @@ module.exports = {
       destDir: 'assets/fonts'
     });
 
+    app.import(path.join(app.bowerDirectory, 'fontawesome/fonts/fontawesome-webfont.woff2'), {
+      destDir: 'assets/fonts'
+    });
+
     app.import(path.join(app.bowerDirectory, 'fontawesome/fonts/fontawesome-webfont.svg'), {
       destDir: 'assets/fonts'
     });
