@@ -15,7 +15,14 @@
   <ul>
     {{#each item in navigationItems}}
       <li {{bind-attr class=item.id}}>
-        {{#link-to item.routeName}}<i></i><span>{{item.name}}</span>{{/link-to}}
+        {{#link-to item.routeName}}
+          <i></i>
+          <span>{{item.name}}</span>
+
+          {{#if item.bubbleCount}}
+            <span class="bubble">{{item.bubbleCount}}</span>
+          {{/if}}
+        {{/link-to}}
       </li>
     {{/each}}
   </ul>
