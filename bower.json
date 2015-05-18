@@ -12,7 +12,7 @@
     "ember-qunit": "0.3.0",
     "ember-qunit-notifications": "0.0.7",
     "qunit": "1.17.1",
-    "paint": "0.6.10",
+    "paint": "0.7.21",
     "spinjs": "2.0.1"
   },
   "resolutions": {
