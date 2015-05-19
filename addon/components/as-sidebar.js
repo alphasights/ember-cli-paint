@@ -20,22 +20,14 @@ export default Ember.Component.extend({
   },
 
   didInsertElement: function() {
-    this.addObserver('isCollapsed', this, this.animateWidth);
+    this.addObserver('isCollapsed', this, this.resetScrollableElements);
   },
 
-  animateWidth: function() {
-    var growth;
-
-    if (this.get('isCollapsed')) {
-      growth = '-= 170px';
-    } else {
-      growth = '+= 170px';
-    }
-
+  resetScrollableElements: function() {
     this.$().velocity({
-      width: growth
+      opacity: 1
     }, {
-      duration: 150,
+      duration: 325,
       progress: function() {
         Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
       }
