@@ -12,7 +12,7 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
     this.set('isActive', true);
     this.set('initialWidth', this.$('> div').width());
 
-    this.$('> div').velocity({
+    Ember.$.Velocity(this.$('> div')[0], {
       right: 0
     }, {
       duration: 200
@@ -34,7 +34,7 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
     close: function() {
       this.set('isActive', false);
 
-      this.$('> div').velocity({
+      Ember.$.Velocity(this.$('> div')[0], {
         right: `-${this.get('initialWidth')}px`
       }, {
         duration: 200,
