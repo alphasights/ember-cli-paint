@@ -8,6 +8,17 @@ export default Ember.Component.extend({
   navigationItems: [],
   isCollapsed: false,
 
+  transitionDuration: Ember.computed(function() {
+    var cssDuration = this.$().css('transition-duration');
+    var duration = parseFloat(cssDuration);
+
+    if (cssDuration.indexOf('ms') !== -1) {
+      return duration;
+    } else {
+      return duration * 1000;
+    }
+  }).volatile(),
+
   actions: {
     toggleCollapse: function() {
       this.toggleProperty('isCollapsed');
@@ -20,25 +31,16 @@ export default Ember.Component.extend({
   },
 
   didInsertElement: function() {
-    this.addObserver('isCollapsed', this, this.animateWidth);
+    this.addObserver('isCollapsed', this, this.updateScrollableElements);
   },
 
-  animateWidth: function() {
-    var growth;
+  updateScrollableElements: function() {
+    var interval = window.setInterval(function() {
+      Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
+    }, 10);
 
-    if (this.get('isCollapsed')) {
-      growth = '-= 170px';
-    } else {
-      growth = '+= 170px';
-    }
-
-    this.$().velocity({
-      width: growth
-    }, {
-      duration: 150,
-      progress: function() {
-        Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
-      }
-    });
+    Ember.run.later(function() {
+      window.clearInterval(interval);
+    }, this.get('transitionDuration'));
   }
 });
