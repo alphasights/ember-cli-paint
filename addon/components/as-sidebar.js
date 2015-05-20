@@ -24,13 +24,13 @@ export default Ember.Component.extend({
   },
 
   resetScrollableElements: function() {
-    this.$().velocity({
-      opacity: 1
-    }, {
-      duration: 325,
-      progress: function() {
-        Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
-      }
-    });
+    var duration = this.$().css('transition-duration');
+    duration = (duration.indexOf("ms")>-1) ? parseFloat(duration) : parseFloat(duration) * 1000;
+
+    var interval = window.setInterval(function() {
+      Ember.$('.scrollable').TrackpadScrollEmulator('recalculate')
+    }, 10);
+
+    Ember.run.later(function() { window.clearInterval(interval); }, duration);
   }
 });
