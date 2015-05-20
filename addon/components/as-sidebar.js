@@ -20,10 +20,10 @@ export default Ember.Component.extend({
   },
 
   didInsertElement: function() {
-    this.addObserver('isCollapsed', this, this.resetScrollableElements);
+    this.addObserver('isCollapsed', this, this.updateScrollableElements);
   },
 
-  resetScrollableElements: function() {
+  updateScrollableElements: function() {
     var duration = this.$().css('transition-duration');
     duration = (duration.indexOf("ms")>-1) ? parseFloat(duration) : parseFloat(duration) * 1000;
 
