@@ -8,6 +8,17 @@ export default Ember.Component.extend({
   navigationItems: [],
   isCollapsed: false,
 
+  transitionDuration: Ember.computed(function() {
+    var cssDuration = this.$().css('transition-duration');
+    var duration = parseFloat(cssDuration);
+
+    if (cssDuration.indexOf('ms') != -1) {
+      return duration;
+    } else {
+      return duration * 1000;
+    }
+  }).volatile(),
+
   actions: {
     toggleCollapse: function() {
       this.toggleProperty('isCollapsed');
@@ -24,13 +35,12 @@ export default Ember.Component.extend({
   },
 
   updateScrollableElements: function() {
-    var duration = this.$().css('transition-duration');
-    duration = (duration.indexOf("ms")>-1) ? parseFloat(duration) : parseFloat(duration) * 1000;
-
     var interval = window.setInterval(function() {
       Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
     }, 10);
 
-    Ember.run.later(function() { window.clearInterval(interval); }, duration);
+    Ember.run.later(function() {
+      window.clearInterval(interval);
+    }, this.get('transitionDuration'));
   }
 });
