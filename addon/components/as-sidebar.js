@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     var cssDuration = this.$().css('transition-duration');
     var duration = parseFloat(cssDuration);
 
-    if (cssDuration.indexOf('ms') != -1) {
+    if (cssDuration.indexOf('ms') !== -1) {
       return duration;
     } else {
       return duration * 1000;
