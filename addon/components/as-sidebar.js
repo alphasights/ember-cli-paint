@@ -2,11 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNameBindings: [':sidebar', 'isCollapsed:collapsed'],
+  concatenatedProperties: ['actionItems'],
 
   applicationName: null,
   currentUser: null,
   navigationItems: [],
   isCollapsed: false,
+
+  actionItems: [{
+    name: 'logout',
+    label: 'Logout'
+  }],
 
   actions: {
     toggleCollapse: function() {

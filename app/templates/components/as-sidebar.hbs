@@ -35,7 +35,9 @@
         {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
 
         {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
-          <li><a {{action "logout"}}>Logout</a></li>
+          {{#each actionItem in actionItems}}
+            <li><a {{action actionItem.name}}>{{actionItem.label}}</a></li>
+          {{/each}}
         {{/rl-dropdown}}
       {{/rl-dropdown-container}}
     </div>
