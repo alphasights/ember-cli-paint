@@ -4,7 +4,9 @@
       <ul class="navigation-actions">
         <li><button disabled={{disablePrevious}} class="previous" {{action "previous"}}></button></li>
         <li><button disabled={{disableNext}} class="next" {{action "next"}}></button></li>
-        <li><button class="info" {{action "toggleNested"}}>Toggle Nested Panel</button></li>
+      </ul>
+      <ul class="navigation-actions">
+        <li><button class="next" {{action "toggleNested"}}></button></li>
       </ul>
     </div>
 
@@ -17,6 +19,7 @@
     {{yield}}
   </div>
 </div>
+
 <div>
   <div class="actions">
     <div class="content">
@@ -28,6 +31,6 @@
   </div>
 
   <div class="content">
-    NESTED SIDE PANEL CONTENT
+    {{yield}}
   </div>
 </div>

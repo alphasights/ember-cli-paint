@@ -5,8 +5,6 @@ import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
   classNameBindings: [':side-panel', 'isActive:active', 'isNested:nested'],
   tagName: 'article',
-
-  initialWidth: null,
   isNested: false,
 
   transitionDuration: Ember.computed(function() {
