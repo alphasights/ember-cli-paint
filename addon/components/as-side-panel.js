@@ -8,7 +8,7 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
   isNested: false,
 
   transitionDuration: Ember.computed(function() {
-    var cssDuration = this.$('> div').css('transition-duration');
+    var cssDuration = this.$().css('transition-duration');
     var cssDelay = this.$().css('transition-delay');
     var duration = parseFloat(cssDuration) + parseFloat(cssDelay);
 

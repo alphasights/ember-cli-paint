@@ -10,7 +10,8 @@ export default Ember.Component.extend({
 
   transitionDuration: Ember.computed(function() {
     var cssDuration = this.$().css('transition-duration');
-    var duration = parseFloat(cssDuration);
+    var cssDelay = this.$().css('transition-delay');
+    var duration = parseFloat(cssDuration) + parseFloat(cssDelay);
 
     if (cssDuration.indexOf('ms') !== -1) {
       return duration;
