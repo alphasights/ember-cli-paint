@@ -7,6 +7,12 @@ export default Ember.Component.extend({
   currentUser: null,
   navigationItems: [],
   isCollapsed: false,
+  actionsTarget: null,
+
+  actionItems: [{
+    name: 'logout',
+    label: 'Logout'
+  }],
 
   transitionDuration: Ember.computed(function() {
     var cssDuration = this.$().css('transition-duration');
@@ -24,10 +30,6 @@ export default Ember.Component.extend({
     toggleCollapse: function() {
       this.toggleProperty('isCollapsed');
       this.sendAction('toggleCollapse');
-    },
-
-    logout: function() {
-      this.sendAction('logout');
     }
   },
 

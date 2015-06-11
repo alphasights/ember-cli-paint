@@ -1,0 +1,27 @@
+<div class="actions">
+  <div class="content">
+    {{#if template}}
+      {{yield}}
+    {{else}}
+      <ul class="navigation-actions">
+        <li>
+          <button
+            disabled={{disablePrevious}}
+            class="previous"
+            {{action "previous" target=parentView}}></button>
+        </li>
+
+        <li>
+          <button
+            disabled={{disableNext}}
+            class="next"
+            {{action "next" target=parentView}}></button>
+        </li>
+      </ul>
+    {{/if}}
+  </div>
+
+  <div class="close">
+    <button {{action "close" target=parentView}}></button>
+  </div>
+</div>

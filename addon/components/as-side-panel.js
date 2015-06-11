@@ -3,9 +3,10 @@ import KeyEventsMixin from 'ember-cli-paint/mixins/key-events';
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
 export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
-  classNameBindings: [':side-panel', 'isActive:active', 'isNested:nested'],
-  tagName: 'article',
+  classNameBindings: [':side-panel', 'isActive:active', 'isNested:nested', 'hasFooter:has-footer'],
+  tagName: 'section',
   isNested: false,
+  hasFooter: false,
 
   transitionDuration: Ember.computed(function() {
     var cssDuration = this.$().css('transition-duration');
