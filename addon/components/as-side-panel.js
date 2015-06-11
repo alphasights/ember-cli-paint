@@ -3,10 +3,11 @@ import KeyEventsMixin from 'ember-cli-paint/mixins/key-events';
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
 export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
-  classNameBindings: [':side-panel', 'isActive:active'],
+  classNameBindings: [':side-panel', 'isActive:active', 'hasFooter:has-footer'],
   tagName: 'section',
 
   initialWidth: null,
+  hasFooter: false,
 
   onDidInsertElement: function() {
     this.set('isActive', true);
