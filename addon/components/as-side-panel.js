@@ -3,10 +3,9 @@ import KeyEventsMixin from 'ember-cli-paint/mixins/key-events';
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
 export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
-  classNameBindings: [':side-panel', 'isActive:active', 'isNested:nested', 'hasFooter:has-footer'],
+  classNameBindings: [':side-panel', 'isActive:active', 'isDrawerActive:drawer-active'],
   tagName: 'section',
-  isNested: false,
-  hasFooter: false,
+  isDrawerActive: false,
 
   transitionDuration: Ember.computed(function() {
     var cssDuration = this.$().css('transition-duration');
@@ -54,9 +53,9 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
       this.sendAction('previous');
     },
 
-    toggleNested: function() {
-      this.toggleProperty('isNested');
-      this.sendAction('toggleNested');
+    toggleDrawer: function() {
+      this.toggleProperty('isDrawerActive');
+      this.sendAction('toggleDrawer');
     }
   },
 
