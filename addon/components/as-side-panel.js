@@ -20,9 +20,9 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
   }).volatile(),
 
   onDidInsertElement: function() {
-    Ember.run.later(this, function() {
+    Ember.run.schedule('afterRender', () => {
       this.set('isActive', true);
-    }, 1);
+    });
 
     // TODO: Figure out why using the Ember `click` instance method resulted in
     // the event handler to be called twice.
