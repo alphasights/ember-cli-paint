@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import TransitionDurationMixin from 'ember-cli-paint/mixins/transition-duration';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(TransitionDurationMixin, {
   classNameBindings: [':sidebar', 'isCollapsed:collapsed'],
 
   applicationName: null,
@@ -13,18 +14,6 @@ export default Ember.Component.extend({
     name: 'logout',
     label: 'Logout'
   }],
-
-  transitionDuration: Ember.computed(function() {
-    var cssDuration = this.$().css('transition-duration');
-    var cssDelay = this.$().css('transition-delay');
-    var duration = parseFloat(cssDuration) + parseFloat(cssDelay);
-
-    if (cssDuration.indexOf('ms') !== -1) {
-      return duration;
-    } else {
-      return duration * 1000;
-    }
-  }).volatile(),
 
   actions: {
     toggleCollapse: function() {
