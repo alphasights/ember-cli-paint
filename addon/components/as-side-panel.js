@@ -1,21 +1,16 @@
 import Ember from 'ember';
 import KeyEventsMixin from 'ember-cli-paint/mixins/key-events';
+import TransitionDurationMixin from 'ember-cli-paint/mixins/transition-duration';
 import InboundActions from 'ember-component-inbound-actions/inbound-actions';
 
-export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
-  classNameBindings: [':side-panel', 'isActive:active'],
-  tagName: 'article',
-
-  initialWidth: null,
+export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, InboundActions, {
+  classNameBindings: [':side-panel', 'isActive:active', 'isDrawerActive:drawer-active'],
+  tagName: 'section',
+  isDrawerActive: false,
 
   onDidInsertElement: function() {
-    this.set('isActive', true);
-    this.set('initialWidth', this.$('> div').width());
-
-    Ember.$.Velocity(this.$('> div')[0], {
-      right: 0
-    }, {
-      duration: 200
+    Ember.run.schedule('afterRender', () => {
+      this.set('isActive', true);
     });
 
     // TODO: Figure out why using the Ember `click` instance method resulted in
@@ -34,15 +29,9 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
     close: function() {
       this.set('isActive', false);
 
-      Ember.$.Velocity(this.$('> div')[0], {
-        right: `-${this.get('initialWidth')}px`
-      }, {
-        duration: 200,
-
-        complete: (() => {
-          this.sendAction('close');
-        })
-      });
+      Ember.run.later(this, function() {
+        this.sendAction('close');
+      }, this.get('transitionDuration'));
     },
 
     next: function() {
@@ -51,6 +40,10 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
 
     previous: function() {
       this.sendAction('previous');
+    },
+
+    toggleDrawer: function() {
+      this.toggleProperty('isDrawerActive');
     }
   },
 
