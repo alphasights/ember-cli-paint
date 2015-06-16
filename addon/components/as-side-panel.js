@@ -55,7 +55,6 @@ export default Ember.Component.extend(KeyEventsMixin, InboundActions, {
 
     toggleDrawer: function() {
       this.toggleProperty('isDrawerActive');
-      this.sendAction('toggleDrawer');
     }
   },
 
