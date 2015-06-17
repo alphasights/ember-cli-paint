@@ -14,6 +14,12 @@ export default Ember.Mixin.create({
     return this.get('navigationIndex') === this.get('navigableModels.length') - 1;
   }),
 
+  initializeNavigableModels: function() {
+    if (this.get('navigableModels') == null) {
+      this.set('navigableModels', []);
+    }
+  }.on('init'),
+
   initializeNavigationIndex: function() {
     if (this.get('navigationIndex') == null) {
       this.set('navigationIndex', this.get('navigableModels').indexOf(this.get('navigableModel')));
