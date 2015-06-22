@@ -52,12 +52,16 @@ export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, I
       this.send('close');
     },
 
-    leftArrow: function() {
-      this.send('previous');
+    leftArrow: function(event) {
+      if (!Ember.$(event.target).is(':input')) {
+        this.send('previous');
+      }
     },
 
-    rightArrow: function() {
-      this.send('next');
+    rightArrow: function(event) {
+      if (!Ember.$(event.target).is(':input')) {
+        this.send('next');
+      }
     }
   }
 });
