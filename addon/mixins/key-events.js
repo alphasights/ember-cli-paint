@@ -16,7 +16,7 @@ export default Ember.Mixin.create({
       var keyEvent = this.get('keyEvents')[key];
 
       if (keyEvent) {
-        keyEvent.apply(this, [event]);
+        keyEvent.call(this, event);
       }
     });
   }.on('didInsertElement'),
