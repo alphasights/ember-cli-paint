@@ -1,5 +1,5 @@
 <header>
-  <img src="assets/images/logo.png" {{bind-attr alt=applicationName}}/>
+  <img src="assets/images/logo.png" alt={{applicationName}} />
   <h1>{{applicationName}}</h1>
 </header>
 
@@ -14,7 +14,7 @@
 
   <ul>
     {{#each item in navigationItems}}
-      <li {{bind-attr class=item.id}}>
+      <li class={{item.id}}>
         {{#link-to item.routeName}}
           <i></i>
           <span>{{item.name}}</span>
@@ -48,7 +48,7 @@
 
     <div class="picture">
       <img alt="Profile Picture"
-        {{bind-attr src=currentUser.avatarUrl title=currentUser.initials}} />
+        src={{currentUser.avatarUr}} title={{currentUser.initials}} />
     </div>
 
     <div class="name">{{currentUser.name}}</div>
