@@ -13,7 +13,7 @@
   </header>
 
   <ul>
-    {{#each item in navigationItems}}
+    {{#each navigationItems as |item|}}
       <li class={{item.id}}>
         {{#link-to item.routeName}}
           <i></i>
@@ -35,7 +35,7 @@
         {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
 
         {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
-          {{#each actionItem in actionItems}}
+          {{#each actionItems as |actionItem|}}
             <li>
               <a {{action actionItem.name target=actionsTarget}}>
                 {{actionItem.label}}
