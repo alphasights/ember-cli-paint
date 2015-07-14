@@ -1,59 +1,69 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  navigationIndex: null,
   navigableModels: null,
   modelRouteParams: [],
   disableCycling: false,
   navigableModel: Ember.computed.alias('model'),
-  firstModel: Ember.computed.equal('navigationIndex', 0),
-  disableNext: Ember.computed.and('lastModel', 'disableCycling'),
-  disablePrevious: Ember.computed.and('firstModel', 'disableCycling'),
 
-  lastModel: Ember.computed('navigationIndex', 'navigableModels.[]', function() {
-    return this.get('navigationIndex') === this.get('navigableModels.length') - 1;
+  isFirstModel: Ember.computed('navigableModel', 'navigableModels.[]', function() {
+    return Ember.isEqual(this.get('navigableModel'), this.get('navigableModels.firstObject'));
+  }),
+  isLastModel: Ember.computed('navigableModel', 'navigableModels.[]', function() {
+    return Ember.isEqual(this.get('navigableModel'), this.get('navigableModels.lastObject'));
   }),
 
-  initializeNavigableModels: function() {
-    if (this.get('navigableModels') == null) {
-      this.set('navigableModels', []);
-    }
-  }.on('init'),
+  disablePrevious: Ember.computed.and('isFirstModel', 'disableCycling'),
+  disableNext: Ember.computed.and('isLastModel', 'disableCycling'),
 
-  initializeNavigationIndex: function() {
-    if (this.get('navigationIndex') == null) {
-      this.set('navigationIndex', this.get('navigableModels').indexOf(this.get('navigableModel')));
-    }
-  }.observes('navigableModel'),
+  navigateToPrevious: function() {
+    var newModel;
 
-  resetNavigationIndex: function() {
-    this.set('navigationIndex', null);
-  }.observes('navigableModels.[]'),
-
-  navigate: function(step) {
-    var models = this.get('navigableModels');
-    var newIndex = this.get('navigationIndex') + step;
-
-    if (newIndex < 0) {
-      newIndex = models.get('length') + newIndex;
+    if (this.get('isFirstModel')) {
+      newModel = this.get('navigableModels.lastObject');
+    } else {
+      newModel = this._getModelAtOffset(-1);
     }
 
-    var newModel = models.objectAt(newIndex % models.get('length'));
+    this._navigateToModel(newModel);
+  },
 
-    this.set('navigationIndex', newIndex);
-    this.transitionToRoute(...this.get('modelRouteParams').concat(newModel.get('id')));
+  navigateToNext: function() {
+    var newModel;
+
+    if (this.get('isLastModel')) {
+      newModel = this.get('navigableModels.firstObject');
+    } else {
+      newModel = this._getModelAtOffset(1);
+    }
+
+    this._navigateToModel(newModel);
+  },
+
+  _getModelAtOffset: function(offset) {
+    var index = this.get('navigableModels').indexOf(this.get('navigableModel'));
+
+    if (index < 0) {
+      return this.get('navigableModels.firstObject');
+    } else {
+      return this.get('navigableModels').objectAt(index + offset);
+    }
+  },
+
+  _navigateToModel: function(model) {
+    this.transitionToRoute(...this.get('modelRouteParams').concat(model.get('id')));
   },
 
   actions: {
     previous: function() {
       if (!this.get('disablePrevious')) {
-        this.navigate(-1);
+        this.navigateToPrevious();
       }
     },
 
     next: function() {
       if (!this.get('disableNext')) {
-        this.navigate(1);
+        this.navigateToNext();
       }
     }
   }
