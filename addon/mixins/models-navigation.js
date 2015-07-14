@@ -5,6 +5,8 @@ export default Ember.Mixin.create({
   modelRouteParams: [],
   disableCycling: false,
   navigableModel: Ember.computed.alias('model'),
+  previousModel: null,
+  nextModel: null,
 
   isFirstModel: Ember.computed('navigableModel', 'navigableModels.[]', function() {
     return Ember.isEqual(this.get('navigableModel'), this.get('navigableModels.firstObject'));
@@ -16,28 +18,27 @@ export default Ember.Mixin.create({
   disablePrevious: Ember.computed.and('isFirstModel', 'disableCycling'),
   disableNext: Ember.computed.and('isLastModel', 'disableCycling'),
 
-  navigateToPrevious: function() {
-    var newModel;
+  updatePreviousAndNextModels: Ember.observer('navigableModel', function() {
+    Ember.run.scheduleOnce('afterRender', this, function() {
+      this.set('previousModel', this._getPreviousModel());
+      this.set('nextModel', this._getNextModel());
+    });
+  }),
 
+  _getPreviousModel: function() {
     if (this.get('isFirstModel')) {
-      newModel = this.get('navigableModels.lastObject');
+      return this.get('navigableModels.lastObject');
     } else {
-      newModel = this._getModelAtOffset(-1);
+      return this._getModelAtOffset(-1);
     }
-
-    this._navigateToModel(newModel);
   },
 
-  navigateToNext: function() {
-    var newModel;
-
+  _getNextModel: function() {
     if (this.get('isLastModel')) {
-      newModel = this.get('navigableModels.firstObject');
+      return this.get('navigableModels.firstObject');
     } else {
-      newModel = this._getModelAtOffset(1);
+      return this._getModelAtOffset(1);
     }
-
-    this._navigateToModel(newModel);
   },
 
   _getModelAtOffset: function(offset) {
@@ -57,13 +58,13 @@ export default Ember.Mixin.create({
   actions: {
     previous: function() {
       if (!this.get('disablePrevious')) {
-        this.navigateToPrevious();
+        this._navigateToModel(this.get('previousModel'));
       }
     },
 
     next: function() {
       if (!this.get('disableNext')) {
-        this.navigateToNext();
+        this._navigateToModel(this.get('nextModel'));
       }
     }
   }
