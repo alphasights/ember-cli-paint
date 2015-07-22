@@ -5,6 +5,8 @@ export default Ember.Component.extend({
   classNameBindings: [':side-panel-footer'],
 
   setHasFooter: Ember.on('init', function() {
-    this.set('parentView.hasFooter', true);
+    Ember.run.scheduleOnce('actions', () => {
+      this.set('parentView.hasFooter', true);
+    });
   })
 });
