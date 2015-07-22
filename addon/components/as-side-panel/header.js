@@ -5,6 +5,8 @@ export default Ember.Component.extend({
   classNameBindings: [':side-panel-header'],
 
   setHasHeader: Ember.on('init', function() {
-    this.set('parentView.hasHeader', true);
+    Ember.run.scheduleOnce('actions', () => {
+      this.set('parentView.hasHeader', true);
+    });
   })
 });
