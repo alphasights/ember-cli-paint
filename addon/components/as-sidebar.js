@@ -20,19 +20,5 @@ export default Ember.Component.extend(TransitionDurationMixin, {
       this.toggleProperty('isCollapsed');
       this.sendAction('toggleCollapse');
     }
-  },
-
-  didInsertElement: function() {
-    this.addObserver('isCollapsed', this, this.updateScrollableElements);
-  },
-
-  updateScrollableElements: function() {
-    var interval = window.setInterval(function() {
-      Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
-    }, 10);
-
-    Ember.run.later(function() {
-      window.clearInterval(interval);
-    }, this.get('transitionDuration'));
   }
 });

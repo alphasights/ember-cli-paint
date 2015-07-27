@@ -13,7 +13,8 @@
     "ember-qunit-notifications": "0.0.7",
     "qunit": "1.17.1",
     "paint": "0.7.22",
-    "spinjs": "2.0.1"
+    "spinjs": "2.0.1",
+    "trackpad-scroll-emulator": "^1.0.8"
   },
   "resolutions": {
     "jquery": "^1.11.1"
