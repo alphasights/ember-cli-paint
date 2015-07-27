@@ -3,7 +3,9 @@ import Ember from 'ember';
 const keyCodeToEventMap = {
   27: 'esc',
   37: 'leftArrow',
-  39: 'rightArrow'
+  38: 'upArrow',
+  39: 'rightArrow',
+  40: 'downArrow'
 };
 
 export default Ember.Mixin.create({
