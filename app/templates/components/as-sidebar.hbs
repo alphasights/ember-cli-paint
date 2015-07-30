@@ -3,7 +3,7 @@
   <h1>{{applicationName}}</h1>
 </header>
 
-{{#as-scrollable tagName="nav"}}
+{{#as-scrollable tagName="nav" actionReceiver=scrollable}}
   <header>
     <div class="toggle-collapse">
       <button {{action "toggleCollapse"}}></button>
