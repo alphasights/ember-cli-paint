@@ -9,30 +9,33 @@ export default Ember.Component.extend(TransitionDurationMixin, {
   navigationItems: [],
   isCollapsed: false,
   actionsTarget: null,
+  scrollable: null,
 
   actionItems: [{
     name: 'logout',
     label: 'Logout'
   }],
 
+  _recalculateScrollable: Ember.observer('isCollapsed', function() {
+    var scrollable = this.get('scrollable');
+    var calculationId;
+
+    if (scrollable != null) {
+      (function repeatCalculation() {
+        scrollable.send('recalculate');
+        calculationId = requestAnimationFrame(repeatCalculation);
+      })();
+
+      Ember.run.later(function() {
+        cancelAnimationFrame(calculationId);
+      }, this.get('transitionDuration'));
+    }
+  }),
+
   actions: {
     toggleCollapse: function() {
       this.toggleProperty('isCollapsed');
       this.sendAction('toggleCollapse');
     }
-  },
-
-  didInsertElement: function() {
-    this.addObserver('isCollapsed', this, this.updateScrollableElements);
-  },
-
-  updateScrollableElements: function() {
-    var interval = window.setInterval(function() {
-      Ember.$('.scrollable').TrackpadScrollEmulator('recalculate');
-    }, 10);
-
-    Ember.run.later(function() {
-      window.clearInterval(interval);
-    }, this.get('transitionDuration'));
   }
 });

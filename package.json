@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-paint",
-  "version": "1.10.8",
+  "version": "1.11.3",
   "description": "Foundation for Ember paint applications",
   "directories": {
     "doc": "doc",
@@ -29,15 +29,16 @@
     "ember-cli-qunit": "0.3.9",
     "ember-cli-uglify": "1.0.1",
     "ember-data": "1.0.0-beta.16.1",
+    "ember-disable-prototype-extensions": "1.0.0",
     "ember-export-application-global": "1.0.2",
-    "ember-disable-prototype-extensions": "1.0.0"
+    "ember-scrollable": "0.1.1"
   },
   "keywords": [
     "ember-addon"
   ],
   "dependencies": {
     "ember-cli-babel": "4.3.3",
-    "ember-component-inbound-actions": "0.0.2"
+    "ember-component-inbound-actions": "git+https://github.com/GavinJoyce/ember-component-inbound-actions.git#gj/ember-1-13-beta"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
