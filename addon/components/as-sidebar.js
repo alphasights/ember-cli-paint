@@ -28,8 +28,12 @@ export default Ember.Component.extend(TransitionDurationMixin, {
 
       Ember.run.later(function() {
         cancelAnimationFrame(calculationId);
-      }, this.get('transitionDuration'));
+      }, this.get('_recalculationDuration'));
     }
+  }),
+
+  _recalculationDuration: Ember.computed('transitionDuration', function() {
+    return this.get('transitionDuration') + 100;
   }),
 
   actions: {
