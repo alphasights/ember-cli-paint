@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "ember-cli-babel": "4.3.3",
-    "ember-component-inbound-actions": "0.0.2"
+    "ember-component-inbound-actions": "git+https://github.com/GavinJoyce/ember-component-inbound-actions.git#gj/ember-1-13-beta"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
