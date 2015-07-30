@@ -20,13 +20,11 @@ export default Ember.Component.extend(TransitionDurationMixin, {
     var scrollable = this.get('scrollable');
     var calculationId;
 
-    function repeatCalculation() {
-      scrollable.send('recalculate');
-      calculationId = requestAnimationFrame(repeatCalculation);
-    }
-
     if (scrollable != null) {
-      requestAnimationFrame(repeatCalculation);
+      (function repeatCalculation() {
+        scrollable.send('recalculate');
+        calculationId = requestAnimationFrame(repeatCalculation);
+      })();
 
       Ember.run.later(function() {
         cancelAnimationFrame(calculationId);
