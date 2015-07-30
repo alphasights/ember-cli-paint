@@ -18,9 +18,17 @@ export default Ember.Component.extend(TransitionDurationMixin, {
 
   _recalculateScrollable: Ember.observer('isCollapsed', function() {
     var scrollable = this.get('scrollable');
+    var calculationId;
 
     if (scrollable != null) {
-      scrollable.send('recalculate');
+      (function repeatCalculation() {
+        scrollable.send('recalculate');
+        calculationId = requestAnimationFrame(repeatCalculation);
+      })();
+
+      Ember.run.later(function() {
+        cancelAnimationFrame(calculationId);
+      }, this.get('transitionDuration'));
     }
   }),
 
