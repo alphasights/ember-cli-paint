@@ -9,11 +9,20 @@ export default Ember.Component.extend(TransitionDurationMixin, {
   navigationItems: [],
   isCollapsed: false,
   actionsTarget: null,
+  scrollable: null,
 
   actionItems: [{
     name: 'logout',
     label: 'Logout'
   }],
+
+  _recalculateScrollable: Ember.observer('isCollapsed', function() {
+    var scrollable = this.get('scrollable');
+
+    if (scrollable != null) {
+      scrollable.send('recalculate');
+    }
+  }),
 
   actions: {
     toggleCollapse: function() {
