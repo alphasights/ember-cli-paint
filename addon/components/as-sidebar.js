@@ -18,28 +18,27 @@ export default Ember.Component.extend(TransitionDurationMixin, {
 
   _recalculateScrollable: Ember.observer('isCollapsed', function() {
     var scrollable = this.get('scrollable');
+    var self = this;
     var calculationId;
 
     if (scrollable != null) {
       (function repeatCalculation() {
         scrollable.send('recalculate');
+        self.sendAction('onToggleAnimation');
         calculationId = requestAnimationFrame(repeatCalculation);
       })();
 
-      Ember.run.later(function() {
+      Ember.run.later(() => {
         cancelAnimationFrame(calculationId);
-      }, this.get('_recalculationDuration'));
+        this.sendAction('onToggleAnimationEnd');
+      }, this.get('transitionDuration'));
     }
-  }),
-
-  _recalculationDuration: Ember.computed('transitionDuration', function() {
-    return this.get('transitionDuration') + 100;
   }),
 
   actions: {
     toggleCollapse: function() {
       this.toggleProperty('isCollapsed');
-      this.sendAction('toggleCollapse');
+      this.sendAction('onToggleCollapse');
     }
   }
 });
