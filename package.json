@@ -36,7 +36,7 @@
     "ember-cli-tooltipster": "0.0.6",
     "ember-rl-dropdown": "0.5.0",
     "ember-scrollable": "0.1.1",
-    "liquid-fire": "0.20.4"
+    "liquid-fire": "0.21.2"
   },
   "keywords": [
     "ember-addon"
