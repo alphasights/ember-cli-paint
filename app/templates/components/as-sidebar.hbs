@@ -25,7 +25,7 @@
             {{/if}}
           {{/link-to}}
         </li>
-      {{else}}
+      {{else if item.subNav}}
         <li class={{item.id}}>
           <ul>
             {{#each item.subNav as |subNavItem|}}
