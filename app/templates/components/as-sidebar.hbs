@@ -14,16 +14,30 @@
 
   <ul>
     {{#each navigationItems as |item|}}
-      <li class={{item.id}}>
-        {{#link-to item.routeName}}
-          <i></i>
-          <span>{{item.name}}</span>
+      {{#if item.routeName}}
+        <li class={{item.id}}>
+          {{#link-to item.routeName}}
+            <i></i>
+            <span>{{item.name}}</span>
 
-          {{#if item.bubbleCount}}
-            <span class="bubble">{{item.bubbleCount}}</span>
-          {{/if}}
-        {{/link-to}}
-      </li>
+            {{#if item.bubbleCount}}
+              <span class="bubble">{{item.bubbleCount}}</span>
+            {{/if}}
+          {{/link-to}}
+        </li>
+      {{else if item.subNav}}
+        <li class={{item.id}}>
+          <ul>
+            {{#each item.subNav as |subNavItem|}}
+              <li class={{subNavItem.id}}>
+                <a href={{subNavItem.link}} target="_blank">
+                  <span>{{subNavItem.name}}</span>
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/if}}
     {{/each}}
 
     {{yield}}
