@@ -29,11 +29,13 @@
         <li class={{item.id}}>
           <ul>
             {{#each item.subNav as |subNavItem|}}
-              <li class={{subNavItem.id}}>
-                <a href={{subNavItem.link}} target="_blank">
-                  <span>{{subNavItem.name}}</span>
-                </a>
-              </li>
+              {{#unless subNavItem.hidden}}
+                <li class={{subNavItem.id}}>
+                  <a href={{subNavItem.link}} target="_blank">
+                    <span>{{subNavItem.name}}</span>
+                  </a>
+                </li>
+              {{/unless}}
             {{/each}}
           </ul>
         </li>
