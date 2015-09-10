@@ -1,74 +1,66 @@
-<header>
-  <img src="assets/images/logo.png" alt={{applicationName}} />
-  <h1>{{applicationName}}</h1>
-</header>
+<div class="item with-sidebar">
+  <a class="logo"><span>{{applicationName}}</span></a>
 
-{{#as-scrollable tagName="nav" actionReceiver=scrollable}}
-  <header>
-    <div class="toggle-collapse">
-      <button {{action "toggleCollapse"}}></button>
-    </div>
+  <nav class="sidebar part-open">
+    <header>
+      <a class="logo"><span>{{applicationName}}</span></a>
+    </header>
 
-    <h1>Menu</h1>
-  </header>
-
-  <ul>
-    {{#each navigationItems as |item|}}
-      {{#if item.routeName}}
-        <li class={{item.id}}>
-          {{#link-to item.routeName}}
-            <i></i>
-            <span>{{item.name}}</span>
-
-            {{#if item.bubbleCount}}
-              <span class="bubble">{{item.bubbleCount}}</span>
-            {{/if}}
-          {{/link-to}}
-        </li>
-      {{else if item.subNav}}
-        <li class={{item.id}}>
-          <ul>
-            {{#each item.subNav as |subNavItem|}}
-              {{#unless subNavItem.hidden}}
-                <li class={{subNavItem.id}}>
-                  <a href={{subNavItem.link}} target="_blank">
-                    <span>{{subNavItem.name}}</span>
-                  </a>
-                </li>
-              {{/unless}}
-            {{/each}}
-          </ul>
-        </li>
-      {{/if}}
-    {{/each}}
-
-    {{yield}}
-  </ul>
-{{/as-scrollable}}
-
-{{#if currentUser}}
-  <footer>
-    <div class="toggle-actions">
-      {{#rl-dropdown-container class="dropdown"}}
-        {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
-
-        {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
-          {{#each actionItems as |actionItem|}}
+    <div class="scroller">
+      <ul class="menu">
+        {{#each navigationLinkItems as |item|}}
+          {{#if item.routeName}}
             <li>
-              <a {{action actionItem.name target=actionsTarget}}>
-                {{actionItem.label}}
-              </a>
+              {{#link-to item.routeName classNameBindings="item.iconClass"}}
+                {{item.name}}
+              {{/link-to}}
             </li>
-          {{/each}}
-        {{/rl-dropdown}}
-      {{/rl-dropdown-container}}
-    </div>
+          {{else if item.subNav}}
+            <li>
+              <ul class="submenu">
+                {{#each item.subNav as |subNavItem|}}
+                  {{#unless subNavItem.hidden}}
+                    <li class={{subNavItem.id}}>
+                      <a href={{subNavItem.link}} target="_blank">
+                        {{subNavItem.name}}
+                      </a>
+                    </li>
+                  {{/unless}}
+                {{/each}}
+              </ul>
+            </li>
+          {{/if}}
+        {{/each}}
 
-    <div class="picture">
-      <img alt="Profile Picture"
-        src={{currentUser.avatarUrl}} title={{currentUser.initials}} />
+        {{yield}}
+      </ul>
     </div>
+  </nav>
 
-    <div class="name">{{currentUser.name}}</div>
-  </footer>
-{{/if}}
+  {{#if currentUser}}
+    <footer>
+      <div class="toggle-actions">
+        {{#rl-dropdown-container class="dropdown"}}
+          {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
+
+          {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
+            {{#each actionItems as |actionItem|}}
+              <li>
+                <a {{action actionItem.name target=actionsTarget}}>
+                  {{actionItem.label}}
+                </a>
+              </li>
+            {{/each}}
+          {{/rl-dropdown}}
+        {{/rl-dropdown-container}}
+      </div>
+
+      <div class="picture">
+        <img alt="Profile Picture"
+          src={{currentUser.avatarUrl}} title={{currentUser.initials}} />
+      </div>
+
+      <div class="name">{{currentUser.name}}</div>
+    </footer>
+  {{/if}}
+</div>
