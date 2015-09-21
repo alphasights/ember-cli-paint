@@ -9,7 +9,7 @@ module.exports = {
     this._super.included(app);
 
     app.import(path.join(app.bowerDirectory, 'paint/paint.scss'));
-    app.import(path.join(app.bowerDirectory, 'modernizr/src/Modernizr.js'));
+    app.import(path.join(app.bowerDirectory, 'modernizr/modernizr.js'));
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation/foundation.js'));
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation/foundation.dropdown.js'));
     app.import(path.join(app.bowerDirectory, 'foundation/js/foundation/foundation.tooltip.js'));
