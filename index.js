@@ -34,13 +34,5 @@ module.exports = {
     app.import(path.join(app.bowerDirectory, 'fontawesome/fonts/fontawesome-webfont.eot'), {
       destDir: 'assets/fonts'
     });
-
-    app.import(path.join(app.bowerDirectory, 'paint/images/favicon.ico'), {
-      destDir: 'assets/images'
-    });
-
-    app.import(path.join(app.bowerDirectory, 'paint/images/logo.png'), {
-      destDir: 'assets/images'
-    });
   }
 };
