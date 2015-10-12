@@ -6,7 +6,7 @@
       <a class="logo"><span>{{applicationName}}</span></a>
     </header>
 
-    <div class="scroller">
+    {{#as-scrollable class="scroller"}}
       <ul class="menu">
         {{#each navigationLinkItems as |item|}}
           {{#if item.routeName}}
@@ -34,7 +34,7 @@
 
         {{yield}}
       </ul>
-    </div>
+    {{/as-scrollable}}
 
     {{#if currentUser}}
       <footer>
