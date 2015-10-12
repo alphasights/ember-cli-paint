@@ -35,32 +35,32 @@
         {{yield}}
       </ul>
     </div>
+
+    {{#if currentUser}}
+      <footer>
+        <div class="toggle-actions">
+          {{#rl-dropdown-container class="dropdown"}}
+            {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
+
+            {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
+              {{#each actionItems as |actionItem|}}
+                <li>
+                  <a {{action actionItem.name target=actionsTarget}}>
+                    {{actionItem.label}}
+                  </a>
+                </li>
+              {{/each}}
+            {{/rl-dropdown}}
+          {{/rl-dropdown-container}}
+        </div>
+
+        <div class="picture">
+          <img alt="Profile Picture"
+            src={{currentUser.avatarUrl}} title={{currentUser.initials}} />
+        </div>
+
+        <div class="name">{{currentUser.name}}</div>
+      </footer>
+    {{/if}}
   </nav>
-
-  {{#if currentUser}}
-    <footer>
-      <div class="toggle-actions">
-        {{#rl-dropdown-container class="dropdown"}}
-          {{#rl-dropdown-toggle class="actions"}}{{/rl-dropdown-toggle}}
-
-          {{#rl-dropdown tagName="ul" class="top" closeOnChildClick=true}}
-            {{#each actionItems as |actionItem|}}
-              <li>
-                <a {{action actionItem.name target=actionsTarget}}>
-                  {{actionItem.label}}
-                </a>
-              </li>
-            {{/each}}
-          {{/rl-dropdown}}
-        {{/rl-dropdown-container}}
-      </div>
-
-      <div class="picture">
-        <img alt="Profile Picture"
-          src={{currentUser.avatarUrl}} title={{currentUser.initials}} />
-      </div>
-
-      <div class="name">{{currentUser.name}}</div>
-    </footer>
-  {{/if}}
 </div>
