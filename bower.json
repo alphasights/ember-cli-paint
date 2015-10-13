@@ -12,7 +12,7 @@
     "ember-qunit": "0.3.0",
     "ember-qunit-notifications": "0.0.7",
     "qunit": "1.17.1",
-    "paint": "0.7.22",
+    "paint": "0.8.31",
     "spinjs": "2.0.1",
     "trackpad-scroll-emulator": "^1.0.8",
     "modernizr": "https://github.com/components/modernizr.git#2.8.3"
