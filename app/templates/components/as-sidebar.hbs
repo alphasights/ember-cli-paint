@@ -12,27 +12,29 @@
     {{#as-scrollable class="scroller"}}
       <ul class="menu">
         {{#each navigationLinkItems as |item|}}
-          {{#if item.routeName}}
-            <li>
+          <li>
+            {{#if item.routeName}}
               {{#link-to item.routeName classNameBindings="item.iconClass"}}
                 {{item.name}}
               {{/link-to}}
-            </li>
-          {{else if item.subNav}}
-            <li>
+            {{else if item.name}}
+              <a class="{{item.iconClass}}">{{item.name}}</a>
+            {{/if}}
+
+            {{#if item.subNav}}
               <ul class="submenu">
                 {{#each item.subNav as |subNavItem|}}
                   {{#unless subNavItem.hidden}}
                     <li class={{subNavItem.id}}>
-                      <a href={{subNavItem.link}} target="_blank">
+                      <a href={{subNavItem.link}} target={{subNavItem.target}}>
                         {{subNavItem.name}}
                       </a>
                     </li>
                   {{/unless}}
                 {{/each}}
               </ul>
-            </li>
-          {{/if}}
+            {{/if}}
+          </li>
         {{/each}}
 
         {{yield}}
