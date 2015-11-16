@@ -4,5 +4,3 @@ import {
 } from 'ember-qunit';
 
 setResolver(resolver);
-
-Foundation.global.namespace = '';
