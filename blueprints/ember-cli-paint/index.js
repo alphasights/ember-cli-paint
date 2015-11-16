@@ -8,7 +8,8 @@ module.exports = {
       { name: 'broccoli-sass', target: '0.6.6' }
     ]).then(function() {
       return this.addBowerPackagesToProject([
-        { name: 'paint', target: '0.7.22' },
+        { name: 'paint', target: '0.9.0' },
+        { name: 'modernizr', target: '2.8.3' },
         { name: 'spinjs', target: '2.0.1' },
         { name: 'tooltipster', target: '3.3.0' },
         { name: 'trackpad-scroll-emulator', target: '1.0.8' }
