@@ -3,8 +3,7 @@
     "Spinner",
     "document",
     "window",
-    "-Promise",
-    "Foundation"
+    "-Promise"
   ],
   "browser" : true,
   "boss" : true,
