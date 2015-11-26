@@ -19,6 +19,10 @@ export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, I
       var $target = Ember.$(event.target);
       var $nonBlurringElements = this.$('> div');
 
+      if ($target.closest('html').length === 0) {
+        return;
+      }
+
       if($target.closest($nonBlurringElements).length === 0) {
         this.send('close');
       }
