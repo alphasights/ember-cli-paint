@@ -24,7 +24,7 @@ export var Navigator = Ember.Object.extend({
   disablePrevious: Ember.computed.oneWay('isFirstModel'),
   disableNext: Ember.computed.oneWay('isLastModel'),
 
-  updatePreviousAndNextModels: Ember.on('init', Ember.observer('model', 'models.[]', function() {
+  updatePreviousAndNextModels: Ember.on('init', Ember.observer('model', function() {
     this.set('previousModel', this.getPreviousModel());
     this.set('nextModel', this.getNextModel());
   })),
