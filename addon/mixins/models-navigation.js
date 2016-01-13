@@ -63,7 +63,7 @@ export var Navigator = Ember.Object.extend({
   previous: function() {
     if (this.get('disablePrevious')) { return; }
 
-    let previousModel = this.get('previousModel');
+    let previousModel = this.get('previousModel') || this.get('firstModel');
 
     if (this.get('isFirstModel')) {
       this.getPreviousModelBeforeFirst().then((model) => {
@@ -77,7 +77,7 @@ export var Navigator = Ember.Object.extend({
   next: function() {
     if (this.get('disableNext')) { return; }
 
-    let nextModel = this.get('nextModel');
+    let nextModel = this.get('nextModel') || this.get('lastModel');
 
     if (this.get('isLastModel')) {
       this.getNextModelAfterLast().then((model) => {
