@@ -5,7 +5,7 @@ module.exports = {
 
   afterInstall: function() {
     return this.addPackagesToProject([
-      { name: 'broccoli-sass', target: '0.7.0' }
+      { name: 'ember-cli-sass', target: '5.3.1' }
     ]).then(function() {
       return this.addBowerPackagesToProject([
         { name: 'paint', target: '0.9.5' },
