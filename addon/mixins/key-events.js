@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const keyCodeToEventMap = {
+const keyToEventMap = {
   27: 'esc',
   37: 'leftArrow',
   38: 'upArrow',
@@ -14,7 +14,7 @@ export default Ember.Mixin.create({
 
   setupKeyHandling: function() {
     this.$(document).on(`keyup.${this.get('elementId')}`, (event) => {
-      var key = keyCodeToEventMap[event.keyCode];
+      var key = (keyToEventMap[event.keyCode]) ? keyToEventMap[event.keyCode] : event.keyCode;
       var keyEvent = this.get('keyEvents')[key];
 
       if (keyEvent) {
