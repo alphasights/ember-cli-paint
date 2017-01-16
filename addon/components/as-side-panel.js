@@ -11,6 +11,7 @@ export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, I
   onDidInsertElement: function() {
     Ember.run.schedule('afterRender', () => {
       this.set('isActive', true);
+      Ember.$('body').addClass('body-overlay-active');
     });
 
     // TODO: Figure out why using the Ember `click` instance method resulted in
@@ -35,6 +36,7 @@ export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, I
 
       Ember.run.later(this, function() {
         this.sendAction('close');
+        Ember.$('body').removeClass('body-overlay-active');
       }, this.get('transitionDuration'));
     },
 
