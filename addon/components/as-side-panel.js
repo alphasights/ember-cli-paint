@@ -30,13 +30,17 @@ export default Ember.Component.extend(KeyEventsMixin, TransitionDurationMixin, I
     });
   }.on('didInsertElement'),
 
+  willDestroyElement() {
+    this._super(...arguments);
+    Ember.$('body').removeClass('body-overlay-active');
+  },
+
   actions: {
     close: function() {
       this.set('isActive', false);
 
       Ember.run.later(this, function() {
         this.sendAction('close');
-        Ember.$('body').removeClass('body-overlay-active');
       }, this.get('transitionDuration'));
     },
 
