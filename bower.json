@@ -12,7 +12,6 @@
     "jquery": "1.11.3",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "modernizr": "2.8.3",
-    "paint": "0.9.18",
     "qunit": "1.20.0",
     "spinjs": "2.0.2",
     "trackpad-scroll-emulator": "1.0.8"
